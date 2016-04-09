@@ -12,8 +12,13 @@ dependencies {
     compile 'pircbot:pircbot:1.5.0'
 }
 
-jar {
+task fatJar(type: Jar) {
     manifest {
-        attributes("Main-Class": "BotMain")
+        attributes 'Implementation-Title': 'BlueCosmoBot',
+                'Implementation-Version': version,
+                'Main-Class': 'BotMain'
     }
+    baseName = project.name + '-all'
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    with jar
 }
