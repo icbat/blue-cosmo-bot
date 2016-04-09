@@ -13,3 +13,8 @@ hs_err_pid*
 
 # Intellij project file
 .idea
+
+# Gradle files
+build/
+.gradle/
+gradle/
